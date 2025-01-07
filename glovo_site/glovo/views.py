@@ -7,6 +7,7 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.response import Response
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter, OrderingFilter
+from .paginations import PostPagination
 
 
 class RegisterView(generics.CreateAPIView):
@@ -60,6 +61,7 @@ class StoreListApiView(generics.ListAPIView):
     filterset_class = StoreFilter
     search_fields = ['store_name']
     permission_classes = [permissions.IsAuthenticated]
+    pagination_class = PostPagination
 
 
 class StoreDetailApiView(generics.RetrieveUpdateAPIView):
